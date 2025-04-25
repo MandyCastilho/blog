@@ -1,44 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubra algumas curiosidades sobre mim neste blog pessoal repleto de histórias e descobertas!">
-    <meta name="keywords" content="blog pessoal, curiosidades, Amanda Ramos Castilho, desenvolvimento pessoal">
-    <meta name="author" content="Amanda Ramos Castilho">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubra algumas curiosidades sobre mim neste blog pessoal repleto de histórias e descobertas!">
+  <meta name="keywords" content="blog pessoal, curiosidades, Amanda Ramos Castilho, desenvolvimento pessoal, hobbies">
+  <meta name="author" content="Amanda Ramos Castilho">
 
-    <link rel="shortcut icon" href="" type="image/x-icon">
-    <link rel="stylesheet" href="style.css"/>
-    
-    <title>Meu blog</title>
+  <link rel="shortcut icon" href="img/favicon.webp" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Meu Blog</title>
 </head>
 
 <body>
 
-    <header>
-      <h1>Blog Simples</h1>
-      <button class="theme-toggle">🌙 Modo Escuro</button>
-    </header>
-  
-    <main>
+  <header>
+    <h1>Blog Simples</h1>
+    <button class="theme-toggle">🌙 Modo Escuro</button>
+  </header>
 
-      <div id="posts">
-        <div class="post">
-          <h2>Primeiro Post</h2>
-          <p>Bem-vindo ao meu blog simples! Aqui você verá novidades, pensamentos aleatórios e talvez uns bugs também 😅</p>
-        </div>
-      </div>
-  
-      <div class="add-post">
-        <h2>Adicionar Novo Post</h2>
-        <input type="text" id="title" placeholder="Título do post" />
-        <textarea id="content" rows="4" placeholder="Conteúdo do post..."></textarea>
-        <button onclick="addPost()">Adicionar</button>
-      </div>
+  <main>
+    <section id="posts">
+      <article class="post">
+        <h2>Primeiro Post</h2>
+        <p>Bem-vindo ao meu blog simples! Aqui você verá novidades, pensamentos aleatórios e talvez uns bugs também 😅</p>
+      </article>
 
-    </main>
+      <article class="post">
+        <h2>Sobre Mim 📝</h2>
+        <p>Oi! Meu nome é Amanda e atualmente estou cursando <strong>Análise e Desenvolvimento de Sistemas</strong> na <strong>FAM – Faculdade das Américas</strong>.</p>
+        <p>Além do mundo tech, eu tenho uma quedinha por outras paixões também. Aqui vão algumas delas:</p>
+        <ul>
+          <li>💃 <strong>Dançar:</strong> (𝑩𝒆𝒍𝒍𝒚 𝑫𝒂𝒏𝒄𝒆, 𝑷𝒐𝒍𝒆 & 𝑯𝒊𝒑 𝑯𝒐𝒑)</li>
+          <li>🎮 <strong>Jogar:</strong> Seja console ou PC, me chama que eu vou!</li>
+          <li>🍳 <strong>Cozinhar:</strong> Inventar receitas é meu laboratório paralelo!</li>
+        </ul>
+        <p>Esse blog é meu cantinho virtual pra compartilhar experiências, aprendizados e os bugs da vida (os reais e os de código também!).</p>
+      </article>
+    </section>
 
-    <script src="js.js"></script>
+    <!-- Formulário para Novo Post -->
+    <section class="add-post">
+      <h2>Adicionar Novo Post</h2>
+      <input type="text" id="title" placeholder="Título do post">
+      <textarea id="content" rows="4" placeholder="Conteúdo do post..."></textarea>
+      <button onclick="addPost()">Adicionar</button>
+    </section>
+  </main>
 
+  <!-- Script -->
+  <script src="js.js"></script>
 </body>
 </html>
+
