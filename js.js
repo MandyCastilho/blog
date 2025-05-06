@@ -63,3 +63,14 @@ function clearError() {
   }
 }
 
+// Espera o DOM carregar pra garantir que os elementos existem
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('postForm');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Impede o reload da página
+    addPost(); // Chama a função para adicionar o post
+  });
+});
+
+
