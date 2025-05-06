@@ -14,10 +14,10 @@
 </head>
 
 <body>
-
+  
   <header>
     <h1>Blog Simples</h1>
-    <button class="theme-toggle">🌙 Modo Escuro</button>
+    <button class="theme-toggle" aria-label="Alternar tema para modo escuro">🌙 Modo Escuro</button>
   </header>
 
   <main>
@@ -43,9 +43,15 @@
     <!-- Formulário para Novo Post -->
     <section class="add-post">
       <h2>Adicionar Novo Post</h2>
-      <input type="text" id="title" placeholder="Título do post">
-      <textarea id="content" rows="4" placeholder="Conteúdo do post..."></textarea>
-      <button onclick="addPost()">Adicionar</button>
+      <form id="postForm">
+        <label for="title">Título do post</label>
+        <input type="text" id="title" placeholder="Título do post" required>
+
+        <label for="content">Conteúdo do post</label>
+        <textarea id="content" rows="4" placeholder="Conteúdo do post..." required></textarea>
+
+        <button type="submit">Adicionar</button>
+      </form>
     </section>
   </main>
 
