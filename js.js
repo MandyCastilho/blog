@@ -7,7 +7,9 @@ const contentInput = document.getElementById('content');
 // Alternar entre modo claro e escuro
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('dark');
-  themeToggle.textContent = body.classList.contains('dark') ? '☀️ Modo Claro' : '🌙 Modo Escuro';
+  themeToggle.textContent = body.classList.contains('dark')
+    ? '☀️ Modo Claro'
+    : '🌙 Modo Escuro';
 });
 
 // Função para adicionar novo post
@@ -15,25 +17,49 @@ function addPost() {
   const title = titleInput.value.trim();
   const content = contentInput.value.trim();
 
-  // Verificação se os campos estão vazios
   if (title === '' || content === '') {
-    alert("Por favor, preencha os dois campos!");
+    showError('Por favor, preencha os dois campos!');
     return;
   }
 
-  // Criação do novo post
-  const postDiv = document.createElement('div');
-  postDiv.className = 'post';
+  const article = document.createElement('article');
+  article.className = 'post';
 
-  postDiv.innerHTML = `
-    <h2>${title}</h2>
-    <p>${content}</p>
-  `;
+  const postTitle = document.createElement('h2');
+  postTitle.textContent = title;
 
-  // Adicionar o novo post ao contêiner de posts
-  postsContainer.appendChild(postDiv);
+  const postContent = document.createElement('p');
+  postContent.textContent = content;
 
-  // Limpar campos de entrada após adicionar o post
+  article.appendChild(postTitle);
+  article.appendChild(postContent);
+
+  postsContainer.appendChild(article);
+
   titleInput.value = '';
   contentInput.value = '';
+  titleInput.focus();
+
+  clearError();
 }
+
+// Mostrar erro sem usar alert()
+function showError(msg) {
+  let error = document.getElementById('form-error');
+  if (!error) {
+    error = document.createElement('p');
+    error.id = 'form-error';
+    error.style.color = 'red';
+    error.style.fontWeight = 'bold';
+    contentInput.parentElement.appendChild(error);
+  }
+  error.textContent = msg;
+}
+
+function clearError() {
+  const error = document.getElementById('form-error');
+  if (error) {
+    error.textContent = '';
+  }
+}
+
