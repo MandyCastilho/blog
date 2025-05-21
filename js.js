@@ -134,10 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Botões do modal
   const confirmYes = document.getElementById('confirmYes');
-  const confirmNo = document.getElementById('confirmNo');
 
   if (confirmYes) confirmYes.addEventListener('click', clearAllPosts);
-  if (confirmNo) confirmNo.addEventListener('click', hideConfirmModal);
 
   loadSavedTheme();
   loadPostsFromStorage();
