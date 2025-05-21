@@ -12,7 +12,7 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-// Adicionar novo post
+// Função para adicionar novo post
 function addPost(title, content, save = true) {
   if (!title || !content) {
     showError('Por favor, preencha os dois campos!');
@@ -87,12 +87,23 @@ function loadPostsFromStorage() {
   });
 }
 
+// Modal: mostrar
+function showConfirmModal() {
+  const modal = document.getElementById('confirmModal');
+  modal.classList.remove('hidden');
+}
+
+// Modal: esconder
+function hideConfirmModal() {
+  const modal = document.getElementById('confirmModal');
+  modal.classList.add('hidden');
+}
+
 // Apagar todos os posts
 function clearAllPosts() {
-  if (confirm('Tem certeza que deseja apagar todos os posts?')) {
-    postsContainer.innerHTML = '';
-    localStorage.removeItem('posts');
-  }
+  postsContainer.innerHTML = '';
+  localStorage.removeItem('posts');
+  hideConfirmModal();
 }
 
 // Restaurar o tema salvo
@@ -109,20 +120,29 @@ function loadSavedTheme() {
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('postForm');
-  const clearButton = document.getElementById('clearPosts');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     addPost(titleInput.value.trim(), contentInput.value.trim());
   });
 
+  // Botão que mostra o modal
+  const clearButton = document.getElementById('clearPosts');
   if (clearButton) {
-    clearButton.addEventListener('click', clearAllPosts);
+    clearButton.addEventListener('click', showConfirmModal);
   }
+
+  // Botões do modal
+  const confirmYes = document.getElementById('confirmYes');
+  const confirmNo = document.getElementById('confirmNo');
+
+  if (confirmYes) confirmYes.addEventListener('click', clearAllPosts);
+  if (confirmNo) confirmNo.addEventListener('click', hideConfirmModal);
 
   loadSavedTheme();
   loadPostsFromStorage();
 });
+
 
 
 
