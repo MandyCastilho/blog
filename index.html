@@ -45,10 +45,10 @@
       <h2>Adicionar Novo Post</h2>
       <form id="postForm">
         <label for="title">Título do post</label>
-        <input type="text" id="title" placeholder="Título do post" required>
+        <input type="text" id="title" name="title" placeholder="Título do post" required>
 
         <label for="content">Conteúdo do post</label>
-        <textarea id="content" rows="4" placeholder="Conteúdo do post..." required></textarea>
+        <textarea id="content" name="content" rows="4" placeholder="Conteúdo do post..." required></textarea>
 
         <button type="submit">Adicionar</button>
       </form>
@@ -58,7 +58,7 @@
       <div class="modal-content">
         <p>Tem certeza que deseja apagar todos os posts?</p>
         <div class="modal-buttons">
-          <button id="confirmYes" class="confirm-btn">Sim</button>
+          <button id="confirmYes" class="confirm-btn">Sim ✔</button>
         </div>
       </div>
     </div>
@@ -68,4 +68,5 @@
   <script src="js.js"></script>
 </body>
 </html>
+
 
