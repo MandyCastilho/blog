@@ -342,6 +342,116 @@ body.dark .modal-content p {
   border-left-color: var(--rosa-fofo);
 }
 
+/* RESPONSIVIDADE PARA TABLETS E CELULARES */
+@media (max-width: 768px) {
+  header {
+    padding: 40px 15px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  main {
+    padding: 30px 15px;
+  }
+
+  .post h2 {
+    font-size: 1.5rem;
+  }
+
+  .post p,
+  .post li {
+    font-size: 1rem;
+  }
+
+  button.theme-toggle {
+    padding: 10px 24px;
+    font-size: 1rem;
+  }
+
+  .add-post h2 {
+    font-size: 1.4rem;
+  }
+
+  .add-post input,
+  .add-post textarea {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .add-post button {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+
+  .modal-content p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 30px 10px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .post {
+    padding: 20px;
+  }
+
+  .post h2 {
+    font-size: 1.3rem;
+  }
+
+  .post p,
+  .post li {
+    font-size: 0.95rem;
+  }
+
+  .add-post {
+    padding: 25px;
+  }
+
+  .add-post h2 {
+    font-size: 1.2rem;
+  }
+
+  button.theme-toggle {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .add-post input,
+  .add-post textarea {
+    font-size: 0.95rem;
+  }
+
+  .add-post button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .confirm-btn {
+    width: 100%;
+  }
+
+  .modal-content p {
+    font-size: 1rem;
+  }
+}
+
+
 
 
 
