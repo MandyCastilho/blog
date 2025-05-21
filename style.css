@@ -30,7 +30,7 @@
   background: linear-gradient(180deg, var(--rosa-fofo), var(--magenta-suave));
   border-radius: 10px;
   border: 2px solid white;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -38,6 +38,7 @@
 }
 
 body {
+  /* IMPORTANTE: Garanta que no HTML tenha a fonte Poppins importada! */
   font-family: 'Poppins', sans-serif;
   background-color: var(--branco-fundo);
   color: #333;
@@ -61,6 +62,68 @@ header h1 {
   letter-spacing: 1px;
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 }
+
+.post p {
+  font-size: 1.15rem; /* um pouco maior pra facilitar a leitura */
+  color: #555; /* cinza escuro suave, mais confortável que preto puro */
+  margin-bottom: 1.2em; /* espaço entre parágrafos */
+  margin-top: 20px;
+  font-weight: 400;
+  text-align: justify; /* justificado para um visual mais alinhado */
+  text-indent: 1.2em; /* indentação de primeira linha, clássico e elegante */
+  letter-spacing: 0.02em; /* levemente espaçado para melhorar leitura */
+  transition: color 0.3s ease;
+}
+
+.post p strong {
+  color: var(--rosa-vibrante); /* destacar palavras fortes */
+  font-weight: 600;
+}
+
+.post p:hover {
+  color: var(--magenta-suave); /* uma leve mudança de cor ao passar o mouse */
+  cursor: default;
+}
+
+/* LISTA */
+.post ul {
+  list-style: none; /* tira os marcadores padrão */
+  padding-left: 0;
+  margin: 1.5rem 0;
+  background-color: #fff0f6;
+  border-left: 5px solid var(--rosa-vibrante);
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(255, 105, 180, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post ul:hover {
+  background-color: #ffe3ef;
+  box-shadow: 0 6px 18px rgba(255, 105, 180, 0.15);
+}
+
+.post li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  color: #444;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.post li::before {
+  content: '';
+  display: none; /* desativa qualquer marcador automático */
+}
+
+.post li strong {
+  color: var(--magenta-suave);
+  font-weight: 600;
+}
+
 
 button.theme-toggle {
   background: white;
@@ -153,6 +216,25 @@ main {
   outline: none;
 }
 
+/* Atenção: essa regra não funciona porque label não está depois do input/textarea */
+/* .add-post input:focus + label,
+.add-post textarea:focus + label {
+  color: var(--rosa-vibrante);
+} */
+
+label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--magenta-suave);
+  margin-bottom: 8px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: var(--rosa-vibrante);
+}
+
 .add-post button {
   background-color: var(--rosa-vibrante);
   border: none;
@@ -215,24 +297,6 @@ main {
   transition: background-color 0.3s ease;
 }
 
-label {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--magenta-suave);
-  margin-bottom: 8px;
-  display: inline-block;
-  transition: color 0.3s ease;
-}
-
-label:hover {
-  color: var(--rosa-vibrante);
-}
-
-.add-post input:focus + label,
-.add-post textarea:focus + label {
-  color: var(--rosa-vibrante);
-}
-
 /* Dark Mode Modernizado */
 body.dark {
   background-color: var(--cinza-escuro);
@@ -277,6 +341,7 @@ body.dark .modal-content p {
   color: #eee;
   border-left-color: var(--rosa-fofo);
 }
+
 
 
 
