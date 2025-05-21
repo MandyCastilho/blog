@@ -7,17 +7,14 @@ const contentInput = document.getElementById('content');
 // Alternar entre modo claro e escuro
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('dark');
-  themeToggle.textContent = body.classList.contains('dark')
-    ? '☀️ Modo Claro'
-    : '🌙 Modo Escuro';
+  const isDark = body.classList.contains('dark');
+  themeToggle.textContent = isDark ? '☀️ Modo Claro' : '🌙 Modo Escuro';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-// Função para adicionar novo post
-function addPost() {
-  const title = titleInput.value.trim();
-  const content = contentInput.value.trim();
-
-  if (title === '' || content === '') {
+// Adicionar novo post
+function addPost(title, content, save = true) {
+  if (!title || !content) {
     showError('Por favor, preencha os dois campos!');
     return;
   }
@@ -31,19 +28,30 @@ function addPost() {
   const postContent = document.createElement('p');
   postContent.textContent = content;
 
+  const postDate = document.createElement('small');
+  const date = new Date();
+  postDate.textContent = `Postado em: ${date.toLocaleString()}`;
+  postDate.style.display = 'block';
+  postDate.style.marginTop = '5px';
+  postDate.style.fontStyle = 'italic';
+
   article.appendChild(postTitle);
   article.appendChild(postContent);
+  article.appendChild(postDate);
 
   postsContainer.appendChild(article);
+
+  if (save) {
+    savePostToStorage(title, content, date.toISOString());
+  }
 
   titleInput.value = '';
   contentInput.value = '';
   titleInput.focus();
-
   clearError();
 }
 
-// Mostrar erro sem usar alert()
+// Mostrar erro
 function showError(msg) {
   let error = document.getElementById('form-error');
   if (!error) {
@@ -56,6 +64,7 @@ function showError(msg) {
   error.textContent = msg;
 }
 
+// Limpar erro
 function clearError() {
   const error = document.getElementById('form-error');
   if (error) {
@@ -63,14 +72,57 @@ function clearError() {
   }
 }
 
-// Espera o DOM carregar pra garantir que os elementos existem
+// Salvar post no localStorage
+function savePostToStorage(title, content, date) {
+  const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+  posts.push({ title, content, date });
+  localStorage.setItem('posts', JSON.stringify(posts));
+}
+
+// Carregar posts do localStorage
+function loadPostsFromStorage() {
+  const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+  posts.forEach(post => {
+    addPost(post.title, post.content, false);
+  });
+}
+
+// Apagar todos os posts
+function clearAllPosts() {
+  if (confirm('Tem certeza que deseja apagar todos os posts?')) {
+    postsContainer.innerHTML = '';
+    localStorage.removeItem('posts');
+  }
+}
+
+// Restaurar o tema salvo
+function loadSavedTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.classList.add('dark');
+    themeToggle.textContent = '☀️ Modo Claro';
+  } else {
+    themeToggle.textContent = '🌙 Modo Escuro';
+  }
+}
+
+// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('postForm');
+  const clearButton = document.getElementById('clearPosts');
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Impede o reload da página
-    addPost(); // Chama a função para adicionar o post
+    e.preventDefault();
+    addPost(titleInput.value.trim(), contentInput.value.trim());
   });
+
+  if (clearButton) {
+    clearButton.addEventListener('click', clearAllPosts);
+  }
+
+  loadSavedTheme();
+  loadPostsFromStorage();
 });
+
 
 

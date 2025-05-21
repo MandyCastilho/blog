@@ -51,10 +51,18 @@
         <textarea id="content" rows="4" placeholder="Conteúdo do post..." required></textarea>
 
         <button type="submit">Adicionar</button>
-
-        <button id="clearPosts">🗑️ Apagar todos os posts</button>
       </form>
     </section>
+
+    <div id="confirmModal" class="modal hidden">
+      <div class="modal-content">
+        <p>Tem certeza que deseja apagar todos os posts?</p>
+        <div class="modal-buttons">
+          <button id="confirmYes" class="confirm-btn">Sim</button>
+          <button id="confirmNo" class="cancel-btn">Cancelar</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="js.js"></script>
